@@ -203,6 +203,70 @@
             </dependency>
 
 
+            <!-- activiti -->
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-engine</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-bpmn-converter</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-bpmn-model</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-image-generator</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-process-validation</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-explorer</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-rest</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-modeler</artifactId>
+                <version>5.17.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>xalan</groupId>
+                        <artifactId>xalan</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-diagram-rest</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-simple-workflow</artifactId>
+                <version>5.17.0</version>
+            </dependency>
+
+
             <!-- tools -->
             <dependency>
                 <groupId>com.google.guava</groupId>
