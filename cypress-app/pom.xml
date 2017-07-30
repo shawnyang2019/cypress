@@ -9,7 +9,6 @@
     <artifactId>cypress-app</artifactId>
     <packaging>war</packaging>
     <name>${project.artifactId}</name>
-    <url>http://maven.apache.org</url>
 
 
     <dependencies>
@@ -19,8 +18,37 @@
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.interesting</groupId>
+            <artifactId>cypress-rbac</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.interesting</groupId>
+            <artifactId>cypress-workflow</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.interesting</groupId>
+            <artifactId>cypress-job</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+
+        <!-- jetty -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jsp</artifactId>
+            <version>${jetty_version}</version>
         </dependency>
     </dependencies>
 

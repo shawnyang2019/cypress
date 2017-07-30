@@ -1,9 +1,16 @@
 /target/
 */target/
+*.class
+
+# idea
+/.idea/
+*.iml
+
+# eclipse
 /.settings/
 /.externalToolBuilders/
 .classpath
 .project
-/.idea/
-*.iml
-*.class
+
+# Log Files
+*.log

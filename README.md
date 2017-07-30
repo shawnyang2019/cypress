@@ -62,9 +62,17 @@
     <module>cypress-common</module>
 </modules>
 ```
-common: 放置spring,mybatis等配置文件和系统性的服务。其他module都依赖common。<br/>
-app: 放置静态资源页<br/>
-业务module:按照mvc三层结构编写。<br/>
+层次结构<br/>
+```
+---------------------------------------
+|       app : html & controller       |
+---------------------------------------
+|  rbac  |  job  |  workflow  |  ...  |
+---------------------------------------
+|  common : util, system config file  |
+---------------------------------------
+```
+
 
 ## Usage
 
