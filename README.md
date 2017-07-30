@@ -78,6 +78,16 @@
 
 支持jar war启动
 
+## FAQ
+
+1. 用SVN做版本控制时，支持只编辑其中的一个模块。
+
+
+
+
+
+
+
 ## Author
 
 [vv](vivid_xiang@163.com)
