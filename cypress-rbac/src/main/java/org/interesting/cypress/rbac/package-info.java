@@ -5,4 +5,4 @@
  * @author vv
  * @since 2017/7/30.
  */
-package com.interesting.cypress.rbac;
+package org.interesting.cypress.rbac;

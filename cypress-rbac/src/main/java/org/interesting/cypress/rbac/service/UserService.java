@@ -1,6 +1,6 @@
-package com.interesting.cypress.rbac.service;
+package org.interesting.cypress.rbac.service;
 
-import com.interesting.cypress.rbac.entity.User;
+import org.interesting.cypress.rbac.entity.User;
 
 /**
  * @author vv

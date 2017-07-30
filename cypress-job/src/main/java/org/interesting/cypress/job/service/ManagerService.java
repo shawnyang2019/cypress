@@ -1,4 +1,4 @@
-package com.interesting.cypress.job.service;
+package org.interesting.cypress.job.service;
 
 /**
  * @author vv

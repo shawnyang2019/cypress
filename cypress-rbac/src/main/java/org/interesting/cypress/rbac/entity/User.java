@@ -1,4 +1,4 @@
-package com.interesting.cypress.rbac.entity;
+package org.interesting.cypress.rbac.entity;
 
 /**
  * @author vv
