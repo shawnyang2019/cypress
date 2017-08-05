@@ -9,18 +9,21 @@ public interface UserDao {
 
     User getUser(long id);
 
-    List<User> getUserByName(String name);
-
-    List<User> getUsers(User user);
-
     int addUser(User user);
-
-    int deleteUser(@Param("userId") Long id);
 
     int updateUser(User user);
 
-    int addBatchUsers(List<User> users);
+    int deleteUsers(List<Long> id);
 
-    int deleteBatchUsers(List<User> users);
+    List<String> getPermissions(Long userId);
 
+    List<Long> getMenuIds(Long userId);
+
+    List<Long> getRoleIds(Long userId);
+
+    int deleteAllRole(Long userId);
+
+    int deleteRoles(@Param("userId") Long userId, @Param("roleIds") List<Long> roleIds);
+
+    int addRoles(@Param("userId")Long userId, @Param("roleIds") List<Long> roleIds);
 }

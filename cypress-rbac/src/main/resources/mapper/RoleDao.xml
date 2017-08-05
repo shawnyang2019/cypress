@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.interesting.cypress.rbac.dao.RoleDao">
+
+    <select id="getRole" parameterType="long" resultType="role">
+        select * from cypress.role where id = #{id}
+	</select>
+
+    <insert id="addRole" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        insert into `user`
+        ( id,role_name,remark,creator,create_time )
+        values
+        ( #{id},#{roleName},#{remark},#{creator},#{createTime} )
+    </insert>
+
+    <update id="updateRole" parameterType="role">
+        update `role`
+        <set>
+            <if test="roleName != null ">role_name=#{roleName},</if>
+            <if test="remark != null ">remark=#{remark},</if>
+            <if test="creator != null ">creator=#{creator},</if>
+            <if test="createTime != null ">create_time=#{createTime},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+    <delete id="deleteRoles">
+        delete from `role` where id in
+        <foreach item="roleId" collection="list" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+        ;
+        delete from user_role where role_id in
+        <foreach item="roleId" collection="list" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+        ;
+        delete from role_menu where role_id in
+        <foreach item="roleId" collection="list" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+    </delete>
+
+
+
+    <select id="getMenuIds" resultType="long">
+        select distinct menu_id from role_menu where role_id = #{roleId}
+    </select>
+
+    <insert id="addMenus" >
+        insert into role_menu
+        ( user_id,role_id)
+        values
+        <foreach collection="roleIds" item="rId" separator="," >
+            (#{userId}, #{rId})
+        </foreach>
+    </insert>
+
+
+    <insert id="addMenus" >
+        insert into role_menu
+        ( role_id,menu_id)
+        values
+        <foreach collection="menuIds" item="mId" separator="," >
+            (#{roleId}, #{mId})
+        </foreach>
+    </insert>
+
+
+    <delete id="deleteMenus">
+        delete from role_menu
+        where role_id = #{roleId} and menu_id in
+        <foreach collection="menuIds" item="m" open="(" separator="," close=")">
+            #{m.id}
+        </foreach>
+    </delete>
+
+
+
+
+
+
+
+
+</mapper>

@@ -25,5 +25,5 @@ public interface RoleMenuService {
      * @param roleId 角色
      * @return 菜单id列表
      */
-    List<Long> queryMenuIds(Long roleId);
+    List<Long> getMenuIds(Long roleId);
 }

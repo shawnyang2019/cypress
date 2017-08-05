@@ -5,75 +5,90 @@
 <mapper namespace="org.interesting.cypress.rbac.dao.UserDao">
 
     <select id="getUser" parameterType="long" resultType="user">
-        select id, username, password,salt
-        from cypress.user
-		where id = #{id}
+        select * from cypress.user where id = #{id}
 	</select>
 
-    <select id="getUserByName" resultType="user">
-        select id,organization_id, username, password,salt, role_ids, locked
-        from shiro.sys_user
-        where username = #{0}
-    </select>
-
     <insert id="addUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_user
-        ( username, password, salt, locked)
+        insert into `user`
+        ( id,username,password,salt,email, mobile,status,creator,createTime )
         values
-        (
+        (#{id},
         #{username},
         #{password},
         #{salt,jdbcType=VARCHAR},
-        #{locked,jdbcType=NUMERIC}
-        )
+        #{email},
+        #{mobile},
+        #{status},
+        #{creator},
+        #{createTime}  )
     </insert>
 
-    <delete id="deleteUser" parameterType="long">
-		delete from sys_user where id=#{userId}
-	</delete>
-
-    <update id="updateUser">
-        update sys_user
-        <trim prefix="set" suffixOverrides=",">
+    <update id="updateUser" parameterType="user">
+        update `user`
+        <set>
             <if test="username != null ">username=#{username},</if>
             <if test="password != null ">password=#{password},</if>
-            <if test="locked != null ">locked=#{locked},</if>
-            <if test="salt != null ">salt=#{salt},</if>
-        </trim>
+            <if test="email != null ">locked=#{email},</if>
+            <if test="mobile != null ">salt=#{mobile},</if>
+            <if test="status != null ">salt=#{status},</if>
+        </set>
         where id=#{id}
     </update>
 
-    <select id="getUsers" parameterType="user" resultType="user">
-        select id, username, password, salt, locked from sys_user
-        <trim prefix="where" prefixOverrides="and">
-            <if test="id != null ">and id=#{id}</if>
-            <if test="username != null ">and username=#{username}</if>
-            <if test="locked != null ">and locked=#{locked}</if>
-        </trim>
+
+    <delete id="deleteUsers">
+        delete from `user` where id in
+        <foreach item="userId" collection="list" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+        ;
+        delete from user_role where user_id in
+        <foreach item="userId" collection="list" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
+    <!-- 查询用户的所有权限 -->
+    <select id="getPermissions" resultType="string">
+        select m.perms from user_role ur
+        LEFT JOIN role_menu rm on ur.role_id = rm.role_id
+        LEFT JOIN menu m on rm.menu_id = m.id
+        where ur.user_id = #{userId}
     </select>
 
-    <insert id="addBatchUsers" parameterType="list" useGeneratedKeys="true">
-        <selectKey resultType="long" keyProperty="id" order="AFTER">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
+    <!-- 查询用户的所有菜单ID -->
+    <select id="getMenuIds" resultType="long">
+        select distinct rm.menu_id from user_role ur
+        LEFT JOIN role_menu rm on ur.role_id = rm.role_id
+        where ur.user_id = #{userId}
+    </select>
 
-        insert into sys_user ( username, password, salt, locked)
-        values
-        <foreach collection="list" item="e" index="index" separator=",">
-            (
-            #{e.username,jdbcType=VARCHAR},
-            #{e.password,jdbcType=VARCHAR},
-            #{e.salt,jdbcType=NUMERIC},
-            #{e.locked,jdbcType=NUMERIC}
-            )
-        </foreach>
-    </insert>
+    <select id="getRoleIds" resultType="long">
+        select role_id from user_role where user_id = #{value}
+    </select>
 
-    <delete id="deleteBatchUsers">
-        delete from sys_user where id in
-        <foreach collection="list" item="u" index="index" open="(" separator="," close=")">
+
+    <delete id="deleteRoles">
+        delete from user_role
+        where user_id = #{0} and role_id in
+        <foreach collection="roleIds" item="u" index="i" open="(" separator="," close=")">
             #{u.id}
         </foreach>
     </delete>
+
+
+    <!-- 给用户批量增加角色 -->
+    <insert id="addRoles" >
+        insert into user_role
+        ( user_id,role_id)
+        values
+        <foreach collection="roleIds" item="rId" separator="," >
+            (#{userId}, #{rId})
+        </foreach>
+    </insert>
+
+
+
+
 
 </mapper>

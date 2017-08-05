@@ -42,7 +42,7 @@ public interface UserService {
      * @param userId 用户id
      * @return 用户所拥有的所有权限
      */
-    List<String> getPermission(Long userId);
+    List<String> getPermissions(Long userId);
 
     /**
      * 查询用户的菜单
