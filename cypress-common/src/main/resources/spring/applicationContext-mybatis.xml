@@ -31,29 +31,19 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource"/>
-		<!--<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
         <property name="mapperLocations" value="classpath:mapper/*.xml" />
-        <property name="typeAliasesPackage" value="org.interesting.cypress.rbac.entity,
-                                                   org.interesting.cypress.common.entity,
-                                                   org.interesting.cypress.job.entity,
-                                                   org.interesting.cypress.workflow.entity" />
+        <!-- mybatis定制 -->
+		<property name="configLocation" value="classpath:mybatis.xml"/>
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.interesting.cypress.rbac.dao,
-		                                    org.interesting.cypress.common.dao,
-		                                    org.interesting.cypress.job.dao,
-                                            org.interesting.cypress.workflow.dao"/>
+		<property name="basePackage" value="org.interesting.cypress.**.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-		<!-- 在此先不注入实例进去只是注入名字，因为前面配置了jdbc.properties,优先实例化sqlSessionFactory会抛出异常
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>  -->
 	</bean>
 
 	<!-- 当注入sqlSession后就可以用类似ibatis的操作 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"/>
-		<!-- 如果想要进行批量操作可加入这个属性
-        <constructor-arg index="1" value="BATCH" />  -->
 	</bean>
 
 	<!-- transaction configuration -->
@@ -68,7 +58,7 @@
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
-		<aop:advisor pointcut="execution(* com.bow.dao.*.*(..))"  advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* org.interesting.cypress.*.dao.*.*(..))"  advice-ref="txAdvice" />
 	</aop:config>
 
 </beans>

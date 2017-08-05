@@ -1,20 +1,18 @@
 package org.interesting.cypress.rbac.entity;
 
 /**
+ * 资源操作描述
+ * 
  * @author vv
  * @since 2017/7/30.
  */
-public enum Op {
+public interface Op {
 
-    READ(1),  EXECUTE(2), MODIFY(3),DELETE(4), ALL(5);
+    String INSERT = "insert";
 
-    private Integer value;
+    String UPDATE = "update";
 
-    Op(Integer operation) {
-        this.value = operation;
-    }
+    String DELETE = "delete";
 
-    public Integer getValue() {
-        return value;
-    }
+    String QUERY = "query";
 }

@@ -1,10 +1,11 @@
 package org.interesting.cypress.rbac.entity;
 
+import java.util.Date;
 import java.util.List;
 
-import org.springframework.util.CollectionUtils;
-
 /**
+ * 用户
+ * 
  * @author ViVi
  * @date 2015年6月29日 下午9:48:59
  */
@@ -12,18 +13,29 @@ public class User {
 
     private Long id;
 
-    private Long organizationId; // 所属公司
-
-    // 默认的为employeeCode;
     private String username;
 
     private String password;
 
     private String salt;
 
-    private List<Long> roleIds; // 拥有的角色列表
+    private List<Long> roleIds;
 
-    private Boolean locked = Boolean.FALSE;
+    private String email;
+
+    private String mobile;
+
+    /**
+     * 状态 0：禁用 1：正常
+     */
+    private Integer status;
+
+    /**
+     * 创建者ID
+     */
+    private Long creator;
+
+    private Date createTime;
 
     public User() {
 
@@ -34,58 +46,34 @@ public class User {
         this.password = password;
     }
 
-    /**
-     * @return the id
-     */
     public Long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(Long id) {
         this.id = id;
     }
 
-    /**
-     * @return the username
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param username the username to set
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * @return the salt
-     */
     public String getSalt() {
         return salt;
     }
 
-    /**
-     * @param salt the salt to set
-     */
     public void setSalt(String salt) {
         this.salt = salt;
     }
@@ -98,35 +86,43 @@ public class User {
         this.roleIds = roleIds;
     }
 
-    public Boolean getLocked() {
-        return locked;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCredentialsSalt() {
-        return username + salt;
+    public String getMobile() {
+        return mobile;
     }
 
-    public Long getOrganizationId() {
-        return organizationId;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public void setOrganizationId(Long organizationId) {
-        this.organizationId = organizationId;
+    public Integer getStatus() {
+        return status;
     }
 
-    public String getRoleIdsStr() {
-        if (CollectionUtils.isEmpty(roleIds)) {
-            return "";
-        }
-        StringBuilder s = new StringBuilder();
-        for (Long roleId : roleIds) {
-            s.append(roleId);
-            s.append(",");
-        }
-        return s.toString();
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Long getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Long creator) {
+        this.creator = creator;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

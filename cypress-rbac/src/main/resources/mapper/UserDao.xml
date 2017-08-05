@@ -5,8 +5,8 @@
 <mapper namespace="org.interesting.cypress.rbac.dao.UserDao">
 
     <select id="getUser" parameterType="long" resultType="user">
-        select id,organization_id, username, password,salt, role_ids, locked
-        from shiro.sys_user
+        select id, username, password,salt
+        from cypress.user
 		where id = #{id}
 	</select>
 
