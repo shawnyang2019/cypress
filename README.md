@@ -53,7 +53,7 @@
 
 ### Package introduce
 
-```
+```xml
 <modules>
     <module>cypress-app</module>
     <module>cypress-rbac</module>
