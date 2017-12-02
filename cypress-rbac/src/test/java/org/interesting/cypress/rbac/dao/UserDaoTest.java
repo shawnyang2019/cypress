@@ -1,6 +1,5 @@
 package org.interesting.cypress.rbac.dao;
 
-import com.google.common.collect.Lists;
 import org.interesting.cypress.rbac.entity.User;
 import org.junit.Before;
 import org.junit.Test;
