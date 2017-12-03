@@ -55,7 +55,7 @@ var setting = {
 var ztree;
 	
 var vm = new Vue({
-	el:'#rrapp',
+	el:'#csApp',
 	data:{
 		q:{
 			roleName: null
@@ -164,7 +164,9 @@ var vm = new Vue({
 	    },
 	    reload: function () {
 	    	vm.showList = true;
+	    	// 获取页号
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
+			// 根据条件和页号查询
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 postData:{'roleName': vm.q.roleName},
                 page:page

@@ -20,7 +20,9 @@
 <script src="../../js/common.js"></script>
 </head>
 <body>
-<div id="rrapp" v-cloak>
+<div id="csApp" v-cloak>
+
+    <!-- 列表界面 -->
 	<div v-show="showList">
 		<div class="grid-btn">
 			<div class="form-group col-sm-2">
@@ -35,7 +37,8 @@
 	    <table id="jqGrid"></table>
 	    <div id="jqGridPager"></div>
     </div>
-    
+
+	<!-- 修改界面 -->
     <div v-show="!showList" class="panel panel-default">
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
