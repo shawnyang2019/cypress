@@ -1,9 +1,9 @@
 package org.interesting.cypress.common.component;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import com.alibaba.druid.pool.DruidDataSource;
 import org.interesting.cypress.common.utils.EncryptUtils;
 
-public class EncryptDataSource extends BasicDataSource {
+public class EncryptDataSource extends DruidDataSource {
 
     @Override
     public void setPassword(String password) {
