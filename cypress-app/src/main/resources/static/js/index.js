@@ -33,7 +33,7 @@ $(window).on('resize', function() {
 Vue.component('menuItem',menuItem);
 
 var vm = new Vue({
-	el:'#rrapp',
+	el:'#cypressApp',
 	data:{
 		user:{},
 		menuList:{},
@@ -106,6 +106,9 @@ var vm = new Vue({
                 shadeClose: false,
                 content: ['http://cdn.renren.io/donate.jpg', 'no']
             });
+        },
+        home: function () {
+            window.location = "/index.html";
         }
 	},
 	created: function(){
@@ -144,3 +147,5 @@ function routerList(router, menuList){
 		}
 	}
 }
+
+

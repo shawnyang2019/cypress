@@ -2,7 +2,7 @@ spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/renren_fast?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+        url: jdbc:mysql://localhost:3306/renren_fast?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true
         username: xww
         password: 123456
         druid:
@@ -31,3 +31,6 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+
+    resources:
+        static-locations: file:D:/oschina/cypress/cypress-app/src/main/resources/static/,file:D:/oschina/cypress/cypress-app/src/main/resources/views/
