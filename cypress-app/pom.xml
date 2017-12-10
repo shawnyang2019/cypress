@@ -28,6 +28,11 @@
             <artifactId>cypress-rbac</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.interesting</groupId>
+            <artifactId>cypress-job</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
 
 
 

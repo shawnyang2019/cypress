@@ -15,7 +15,7 @@
             <AppenderRef ref="Console"/>
         </logger>
 
-        <logger name="org.springframework" level="debug">
+        <logger name="org.springframework.web" level="debug">
             <AppenderRef ref="Console"/>
         </logger>
 
