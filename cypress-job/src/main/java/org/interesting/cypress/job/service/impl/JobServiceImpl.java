@@ -1,7 +1,7 @@
 package org.interesting.cypress.job.service.impl;
 
-import org.interesting.cypress.job.core.JobListener;
-import org.interesting.cypress.job.handler.JobHandler;
+import org.interesting.cypress.job.demo.core.JobListener;
+import org.interesting.cypress.job.demo.handler.JobHandler;
 import org.interesting.cypress.job.service.JobService;
 
 /**

@@ -7,6 +7,6 @@
     </settings>
 
     <typeAliases>
-        <package name="org.interesting.cypress.rbac.entity"/>
+        <package name="org.interesting.cypress.rbac.demo.entity"/>
     </typeAliases>
 </configuration>
