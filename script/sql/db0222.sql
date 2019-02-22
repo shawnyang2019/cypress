@@ -1,3 +1,10 @@
+DROP DATABASE IF EXISTS `renren_fast`;
+CREATE DATABASE `renren_fast`
+  DEFAULT CHARACTER SET utf8
+  COLLATE utf8_general_ci;
+;
+USE `renren_fast`;
+
 -- 菜单
 CREATE TABLE `sys_menu` (
   `menu_id` bigint NOT NULL AUTO_INCREMENT,
